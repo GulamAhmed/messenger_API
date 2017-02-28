@@ -19,7 +19,7 @@ public class Message {
 	}
 	
 	
-	public Message(long id, String Message, String author)
+	public Message(long id, String author, String message)
 	{
 		this.id=id;
 		this.message=message;

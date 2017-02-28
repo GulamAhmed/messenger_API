@@ -1,6 +1,7 @@
 package org.cocoslabs.api.messenger.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +15,8 @@ public class MessageService {
 	
 	public MessageService()
 	{
-		messages.put(1L, new Message(1, "hey","o"));
-		messages.put(2L, new Message(1, "goy","p"));
+		messages.put(1L, new Message(1, "FirstUser","One"));
+		messages.put(2L, new Message(2, "SecondUser","Two"));
 	}
 	
 	 public List<Message> getAllMessages()
@@ -29,7 +30,7 @@ public class MessageService {
 		 
 		 return new ArrayList<Message>(messages.values());
 	 }
-
+	 
 	 /*public Message getMessage(long  messageId)
 	 {
 		 return messages.get(messageId);
@@ -39,4 +40,22 @@ public class MessageService {
 		// TODO Auto-generated method stub
 		return messages.get(id);
 }
+	public List<Message> getAllMessagesForYear(int year)
+	{
+		List<Message> messageForYear = new ArrayList<>();
+		Calendar cal = Calendar.getInstance();
+		for (Message message : messages.values())
+		{
+			cal.setTime(message.getCreated());
+			if(cal.get(Calendar.YEAR)== year)
+			{
+				messageForYear.add(message);
+			}
+		}
+		return messageForYear;
+	}
+	/*public List<Message> getAllMessagesPaginated(int start , int size)
+	{
+		return "worked";
+	}*/
 }
